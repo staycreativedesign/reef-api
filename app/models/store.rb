@@ -12,6 +12,5 @@
 class Store < ApplicationRecord
   validates :name, :address, :description, presence: true
   validates_uniqueness_of :name
-
   has_many :items
 end
