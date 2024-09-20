@@ -1,0 +1,1984 @@
+{
+	"info": {
+		"_postman_id": "576154ae-0a4e-47c0-aa1a-a492553cb288",
+		"name": "Reef API",
+		"description": "This is a quick spin of an API\n\nNo auth\n\nCORS is not setup\n\nIf you are using POSTMAN please set `{{base_url}}` to wherever your app is pointing to\n\nTo find `{{base_url}} goto`\n\n`Collections` >> `Reef API` >> `Variables` and set your localhost and port before `/api/`",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "2706642"
+	},
+	"item": [
+		{
+			"name": "Store API",
+			"item": [
+				{
+					"name": "Get all stores",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"var template = `",
+									"<style type=\"text/css\">",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+									"    .tftable tr {background-color:#ffffff;}",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+									"    .tftable tr:hover {background-color:#e0ffff;}",
+									"</style>",
+									"",
+									"<table class=\"tftable\" border=\"1\">",
+									"    <tr>",
+									"        <th>ID</th>",
+									"        <th>Type</th>",
+									"        <th>Name</th>",
+									"        <th>Description</th>",
+									"        <th>Address</th>",
+									"    </tr>",
+									"    ",
+									"    {{#each response.data}}",
+									"        <tr>",
+									"            <td>{{id}}</td>",
+									"            <td>{{type}}</td>",
+									"            <td>{{attributes.name}}</td>",
+									"            <td>{{attributes.description}}</td>",
+									"            <td>{{attributes.address}}</td>",
+									"        </tr>",
+									"    {{/each}}",
+									"</table>",
+									"`;",
+									"",
+									"function constructVisualizerPayload() {",
+									"    return { response: pm.response.json() }",
+									"}",
+									"",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/stores/",
+						"description": "Gets all the stores"
+					},
+					"response": [
+						{
+							"name": "Get all stores",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": "/api/v1/stores/"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"876a86cf64c820a57590e73b0df5f306\""
+								},
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "ebf62ee0-5678-4fdd-88f4-be6f942a99cc"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.043273"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=26.60, instantiation.active_record;dur=0.05, render.active_model_serializers;dur=0.90, process_action.action_controller;dur=20.13"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2647"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"1\",\n            \"type\": \"stores\",\n            \"attributes\": {\n                \"name\": \"Blue Plate Spoon\",\n                \"description\": \"Our Mission at Denny’s is to establish beneficial business relationships with diverse suppliers who share our commitment to customer service, quality and competitive pricing.\",\n                \"address\": \"4428 Danyell Forge, Walshmouth, ID 65196-1333\"\n            }\n        },\n        {\n            \"id\": \"5\",\n            \"type\": \"stores\",\n            \"attributes\": {\n                \"name\": \"Silver Spoon\",\n                \"description\": \"To sell delicious and remarkable food and drinks. That the food and drink we sell meets the highest standards of quality, freshness and seasonality and combines both modern-creative and traditional southern styles of cooking. To consistently provide our customers with impeccable service by demonstrating warmth, graciousness, efficiency, knowledge, professionalism and integrity in our work. To have every customer who comes through our doors leave impressed by Maxie’s and excited to come back again. To create and maintain a restaurant that is comprehensive and exceptional in its attention to every detail of operation. To provide all who work with us a friendly, cooperative and rewarding environment which encourages long- term, satisfying, growth employment. To keep our concept fresh, exciting and on the cutting edge of the hospitality and entertainment industry. To be a giving member of the Ithaca community and to use our restaurant to improve the quality of life in the Finger Lakes region.\",\n                \"address\": \"Apt. 591 51754 Raylene Street, Port Jeannachester, PA 94757\"\n            }\n        },\n        {\n            \"id\": \"6\",\n            \"type\": \"stores\",\n            \"attributes\": {\n                \"name\": \"Red Creamery\",\n                \"description\": \"To ensure that each guest receives prompt, professional, friendly and courteous service. To maintain a clean, comfortable and well maintained premises for our guests and staff. To provide at a fair price – nutritional, well-prepared meals – using only quality ingredients. To ensure that all guests and staff are treated with the respect and dignity they deserve. To thank each guest for the opportunity to serve them. By maintaining these objectives we shall be assured of a fair profit that will allow us to contribute to the community we serve.\",\n                \"address\": \"15708 Larry Rest, Kirlinville, OK 38415\"\n            }\n        },\n        {\n            \"id\": \"7\",\n            \"type\": \"stores\",\n            \"attributes\": {\n                \"name\": \"Fat Box\",\n                \"description\": \"To provide an exceptional dining experience that satisfies our guests’ grown-up tastes by being a Cut-Above in everything we do.\",\n                \"address\": \"259 Hickle Freeway, Blandaton, NC 06553\"\n            }\n        },\n        {\n            \"id\": \"8\",\n            \"type\": \"stores\",\n            \"attributes\": {\n                \"name\": \"Created now\",\n                \"description\": \"Description\",\n                \"address\": \"123 Elm Street.\"\n            }\n        },\n        {\n            \"id\": \"4\",\n            \"type\": \"stores\",\n            \"attributes\": {\n                \"name\": \"i dont know\",\n                \"description\": \"eee\",\n                \"address\": \"xxx\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get specific store",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/stores/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"stores",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "6"
+								}
+							]
+						},
+						"description": "Get a specific store"
+					},
+					"response": [
+						{
+							"name": "Get specific store",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "/api/v1/stores/:id",
+									"path": [
+										"api",
+										"v1",
+										"stores",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"b7ce640e772a3215ba7d42d9f09a51eb\""
+								},
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "40a4fd6b-cee1-45ae-9c8d-b194a427bbcc"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.023920"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=0.37, instantiation.active_record;dur=0.03, render.active_model_serializers;dur=0.20, process_action.action_controller;dur=1.89"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"4\",\n        \"type\": \"stores\",\n        \"attributes\": {\n            \"name\": \"i dont know\",\n            \"description\": \"eee\",\n            \"address\": \"xxx\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"Created one\",\n            \"description\": \"Description\",\n            \"address\": \"123 Elm Street.\"\n\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/stores/",
+						"description": "Create a store\n\nall fields are necessary\n\n`name` fields should be unique"
+					},
+					"response": [
+						{
+							"name": "Create Store",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"Created one\",\n            \"description\": \"Description\",\n            \"address\": \"123 Elm Street.\"\n\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "/api/v1/stores/"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"871861f73d8b5261a04936b768097d5a\""
+								},
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "64870b63-72fa-44af-b3f0-5a0cea7a60b8"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.027090"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=4.89, start_transaction.active_record;dur=0.00, transaction.active_record;dur=8.51, render.active_model_serializers;dur=0.21, process_action.action_controller;dur=10.83"
+								},
+								{
+									"key": "Content-Length",
+									"value": "127"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"9\",\n        \"type\": \"stores\",\n        \"attributes\": {\n            \"name\": \"Created one\",\n            \"description\": \"Description\",\n            \"address\": \"123 Elm Street.\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"i dont know\",\n            \"address\": \"xxx\",\n            \"description\": \"eee\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/stores/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"stores",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						},
+						"description": "Update a store\n\n`name` field should be unique"
+					},
+					"response": [
+						{
+							"name": "Update Store",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"i dont know\",\n            \"address\": \"xxx\",\n            \"description\": \"eee\"\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/api/v1/stores/:id",
+									"path": [
+										"api",
+										"v1",
+										"stores",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"b7ce640e772a3215ba7d42d9f09a51eb\""
+								},
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "c9e3a784-bd09-4408-9ba9-36488bf10bf3"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.030759"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=3.41, instantiation.active_record;dur=0.03, start_transaction.active_record;dur=0.00, transaction.active_record;dur=3.68, render.active_model_serializers;dur=0.19, process_action.action_controller;dur=5.82"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"4\",\n        \"type\": \"stores\",\n        \"attributes\": {\n            \"name\": \"i dont know\",\n            \"description\": \"eee\",\n            \"address\": \"xxx\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/stores/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"stores",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						},
+						"description": "Delete a store\n\nPlease note deleting a store will also delete its associated items and ingredients"
+					},
+					"response": [
+						{
+							"name": "Delete Store",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/api/v1/stores/:id",
+									"path": [
+										"api",
+										"v1",
+										"stores",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache"
+								},
+								{
+									"key": "x-request-id",
+									"value": "f802ad69-b477-4da3-9927-c06d0ef0403f"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.014860"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=1.31, instantiation.active_record;dur=0.03, start_transaction.active_record;dur=0.00, transaction.active_record;dur=0.99, render.active_model_serializers;dur=0.02, process_action.action_controller;dur=2.67"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "This is for Store CRUD",
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Item API",
+			"item": [
+				{
+					"name": "Get all items from store",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/stores/:store_id/items",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"stores",
+								":store_id",
+								"items"
+							],
+							"variable": [
+								{
+									"key": "store_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get all items from a specific store"
+					},
+					"response": [
+						{
+							"name": "Get all items from store",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "/api/v1/stores/:store_id/items",
+									"path": [
+										"api",
+										"v1",
+										"stores",
+										":store_id",
+										"items"
+									],
+									"variable": [
+										{
+											"key": "store_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"a8f2187fa448b1e7576efbd570a96da6\""
+								},
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "5f89c370-981a-444f-ba8e-b83385a2c981"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.021289"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=1.00, instantiation.active_record;dur=0.12, render.active_model_serializers;dur=0.69, process_action.action_controller;dur=4.20"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1528"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"6\",\n            \"type\": \"items\",\n            \"attributes\": {\n                \"name\": \"Pasta and Beans\",\n                \"description\": \"Thick slices of French toast bread, brown sugar, half-and-half and vanilla, topped with powdered sugar. With two eggs served any style, and your choice of smoked bacon or smoked ham.\",\n                \"price-cents\": 613\n            }\n        },\n        {\n            \"id\": \"7\",\n            \"type\": \"items\",\n            \"attributes\": {\n                \"name\": \"Cheeseburger\",\n                \"description\": \"Fresh Norwegian salmon, lightly brushed with our herbed Dijon mustard sauce, with choice of two sides.\",\n                \"price-cents\": 613\n            }\n        },\n        {\n            \"id\": \"9\",\n            \"type\": \"items\",\n            \"attributes\": {\n                \"name\": \"Poutine\",\n                \"description\": \"Two buttermilk waffles, topped with whipped cream and maple syrup, a side of two eggs served any style, and your choice of smoked bacon or smoked ham.\",\n                \"price-cents\": 613\n            }\n        },\n        {\n            \"id\": \"10\",\n            \"type\": \"items\",\n            \"attributes\": {\n                \"name\": \"Mushroom Risotto\",\n                \"description\": \"Three egg omelet with Roquefort cheese, chives, and ham. With a side of roasted potatoes, and your choice of toast or croissant.\",\n                \"price-cents\": 613\n            }\n        },\n        {\n            \"id\": \"14\",\n            \"type\": \"items\",\n            \"attributes\": {\n                \"name\": \"Pork Sausage Roll\",\n                \"description\": \"Two butter croissants of your choice (plain, almond or cheese). With a side of herb butter or house-made hazelnut spread.\",\n                \"price-cents\": 613\n            }\n        },\n        {\n            \"id\": \"15\",\n            \"type\": \"items\",\n            \"attributes\": {\n                \"name\": \"Chilli con Carne\",\n                \"description\": \"Three egg omelet with Roquefort cheese, chives, and ham. With a side of roasted potatoes, and your choice of toast or croissant.\",\n                \"price-cents\": 613\n            }\n        },\n        {\n            \"id\": \"32\",\n            \"type\": \"items\",\n            \"attributes\": {\n                \"name\": \"salad from me\",\n                \"description\": \"xxx\",\n                \"price-cents\": 12121\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get specific item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/items/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"items",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Get a specific item from a store"
+					},
+					"response": [
+						{
+							"name": "Get specific item",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "/api/v1/items/:id",
+									"path": [
+										"api",
+										"v1",
+										"items",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"ab6611e3f9adb85b41b1e0c49acb7d97\""
+								},
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "cf1daa4e-a24c-4a44-8a10-a8088e8a40af"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.026030"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=0.27, instantiation.active_record;dur=0.03, render.active_model_serializers;dur=0.19, process_action.action_controller;dur=1.58"
+								},
+								{
+									"key": "Content-Length",
+									"value": "218"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"2\",\n        \"type\": \"items\",\n        \"attributes\": {\n            \"name\": \"Pho\",\n            \"description\": \"Two butter croissants of your choice (plain, almond or cheese). With a side of herb butter or house-made hazelnut spread.\",\n            \"price-cents\": 613\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"salad from me\",\n            \"description\": \"xxx\",\n            \"price-cents\": \"12121\"\n\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/stores/:store_id/items",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"stores",
+								":store_id",
+								"items"
+							],
+							"variable": [
+								{
+									"key": "store_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Please note `price_cents` must not contain any alphabetical letter or it will throw an error.\n\n`name` fields should be unique\n\nall fields are necessary"
+					},
+					"response": [
+						{
+							"name": "Create Item",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"New Item 2\",\n            \"description\": \"quick demo\",\n            \"price-cents\": \"123\"\n\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/api/v1/stores/:store_id/items",
+									"path": [
+										"api",
+										"v1",
+										"stores",
+										":store_id",
+										"items"
+									],
+									"variable": [
+										{
+											"key": "store_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"c5b73df1d7ce066ed665ff6ca78ed0f4\""
+								},
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "ca523f08-a032-48dd-8b34-512ea2706743"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.037201"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=7.49, instantiation.active_record;dur=0.03, start_transaction.active_record;dur=0.00, transaction.active_record;dur=4.42, render.active_model_serializers;dur=0.19, process_action.action_controller;dur=9.38"
+								},
+								{
+									"key": "Content-Length",
+									"value": "115"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"34\",\n        \"type\": \"items\",\n        \"attributes\": {\n            \"name\": \"New Item 2\",\n            \"description\": \"quick demo\",\n            \"price-cents\": 123\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"xxx you!!! \",\n            \"description\": \"32221\"\n\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/items/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"items",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Update an Item\n\n`name` fields should be unique\n\nPlease note `price_cents` must not contain any alphabetical letter or it will throw an error."
+					},
+					"response": [
+						{
+							"name": "Update Item",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"Update name \",\n            \"description\": \"32221\"\n\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "/api/v1/items/:id",
+									"path": [
+										"api",
+										"v1",
+										"items",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"9f5e03ae274f41aa9e9f35cee8139386\""
+								},
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "dc967a34-1fb7-473e-a85e-bd0045e65692"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.024205"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=2.12, instantiation.active_record;dur=0.03, start_transaction.active_record;dur=0.00, transaction.active_record;dur=4.24, render.active_model_serializers;dur=0.24, process_action.action_controller;dur=6.92"
+								},
+								{
+									"key": "Content-Length",
+									"value": "111"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"3\",\n        \"type\": \"items\",\n        \"attributes\": {\n            \"name\": \"Update name \",\n            \"description\": \"32221\",\n            \"price-cents\": 613\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/items/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"items",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "12"
+								}
+							]
+						},
+						"description": "Delets an item and all the ingredients associated to that item"
+					},
+					"response": [
+						{
+							"name": "Delete Item",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/items/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"items",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "14"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache"
+								},
+								{
+									"key": "x-request-id",
+									"value": "e4a31e1d-eea1-4e2b-a7fb-aaedc0ab699a"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.021797"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=2.37, instantiation.active_record;dur=0.05, start_transaction.active_record;dur=0.00, transaction.active_record;dur=3.15, render.active_model_serializers;dur=0.02, process_action.action_controller;dur=4.93"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "This is for Item CRUD\n\nPlease note `price_cents` must not contain any alphabetical letter or it will throw an error."
+		},
+		{
+			"name": "Ingredients API",
+			"item": [
+				{
+					"name": "Get all ingredients from item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/items/:item_id/ingredients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"items",
+								":item_id",
+								"ingredients"
+							],
+							"variable": [
+								{
+									"key": "item_id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Gets all ingredients from an item"
+					},
+					"response": [
+						{
+							"name": "Get all ingredients from item",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/items/:item_id/ingredients",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"items",
+										":item_id",
+										"ingredients"
+									],
+									"variable": [
+										{
+											"key": "item_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"2d9d44b9ba94ba67ddc5f00008902c0c\""
+								},
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "72a0d7df-e94a-4c9b-ac85-8f904d9b5972"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.023979"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=0.99, instantiation.active_record;dur=0.09, render.active_model_serializers;dur=0.30, process_action.action_controller;dur=3.12"
+								},
+								{
+									"key": "Content-Length",
+									"value": "169"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"19\",\n            \"type\": \"ingredients\",\n            \"attributes\": {\n                \"name\": \"Red Wine\",\n                \"quantity\": 2\n            }\n        },\n        {\n            \"id\": \"46\",\n            \"type\": \"ingredients\",\n            \"attributes\": {\n                \"name\": \"Arrowroot\",\n                \"quantity\": 3\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get specific ingredient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/ingredients/:id/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ingredients",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Get a specific ingredient"
+					},
+					"response": [
+						{
+							"name": "Get specific ingredient",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/ingredients/:id/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"ingredients",
+										":id",
+										""
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"780e55bf693e6f1f5ac259f2d32f14dd\""
+								},
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "c500d234-95f2-47f7-8a53-8aae35cf1159"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.023765"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=0.38, instantiation.active_record;dur=0.03, render.active_model_serializers;dur=0.19, process_action.action_controller;dur=2.33"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"1\",\n        \"type\": \"ingredients\",\n        \"attributes\": {\n            \"name\": \"Soy Sauce\",\n            \"quantity\": 7\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Ingredient",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"tahini\",\n            \"quantity\": 3\n\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/items/:item_id/ingredients",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"items",
+								":item_id",
+								"ingredients"
+							],
+							"variable": [
+								{
+									"key": "item_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Create an ingredient\n\n`name` fields should be unique\n\nall fields are necessary"
+					},
+					"response": [
+						{
+							"name": "Create Ingredient",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"tahiniiii\",\n            \"quantity\": 3\n\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/items/:item_id/ingredients",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"items",
+										":item_id",
+										"ingredients"
+									],
+									"variable": [
+										{
+											"key": "item_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"f83ebc017b9fef97fa8354e8f10ed419\""
+								},
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "9eb6b0c3-35f4-466f-bd95-2c97ac22e675"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.022743"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=1.94, instantiation.active_record;dur=0.03, start_transaction.active_record;dur=0.00, transaction.active_record;dur=2.53, render.active_model_serializers;dur=0.19, process_action.action_controller;dur=6.20"
+								},
+								{
+									"key": "Content-Length",
+									"value": "88"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"52\",\n        \"type\": \"ingredients\",\n        \"attributes\": {\n            \"name\": \"tahiniiii\",\n            \"quantity\": 3\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Ingredient",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"something\",\n            \"quantity\": 3\n\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/ingredients/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ingredients",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "13"
+								}
+							]
+						},
+						"description": "Update an ingredient\n\n`name` fields should be unique"
+					},
+					"response": [
+						{
+							"name": "Update Ingredient",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"attributes\": {\n            \"name\": \"update name\",\n            \"quantity\": 3\n\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/ingredients/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"ingredients",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "15"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "etag",
+									"value": "W/\"418d93af03f28df72a194524768bb18a\""
+								},
+								{
+									"key": "cache-control",
+									"value": "max-age=0, private, must-revalidate"
+								},
+								{
+									"key": "x-request-id",
+									"value": "9b36070f-b10a-4562-9120-d41f21ee7cf2"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.026364"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=1.69, instantiation.active_record;dur=0.04, start_transaction.active_record;dur=0.00, transaction.active_record;dur=2.06, render.active_model_serializers;dur=0.19, process_action.action_controller;dur=4.87"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"15\",\n        \"type\": \"ingredients\",\n        \"attributes\": {\n            \"name\": \"update name\",\n            \"quantity\": 3\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Ingredient",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/ingredients/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ingredients",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "13"
+								}
+							]
+						},
+						"description": "Delete an Ingredient"
+					},
+					"response": [
+						{
+							"name": "Delete Ingredient",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/ingredients/:id",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"ingredients",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "15"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "x-frame-options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "x-xss-protection",
+									"value": "0"
+								},
+								{
+									"key": "x-content-type-options",
+									"value": "nosniff"
+								},
+								{
+									"key": "x-permitted-cross-domain-policies",
+									"value": "none"
+								},
+								{
+									"key": "referrer-policy",
+									"value": "strict-origin-when-cross-origin"
+								},
+								{
+									"key": "vary",
+									"value": "Accept"
+								},
+								{
+									"key": "cache-control",
+									"value": "no-cache"
+								},
+								{
+									"key": "x-request-id",
+									"value": "83684439-7a02-46ee-a45b-8a881aba4bff"
+								},
+								{
+									"key": "x-runtime",
+									"value": "0.030596"
+								},
+								{
+									"key": "server-timing",
+									"value": "start_processing.action_controller;dur=0.01, sql.active_record;dur=2.43, instantiation.active_record;dur=0.06, start_transaction.active_record;dur=0.00, transaction.active_record;dur=4.47, render.active_model_serializers;dur=0.05, process_action.action_controller;dur=6.46"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"description": "This is for Ingredient CRUD"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "/api/v1",
+			"type": "string"
+		}
+	]
+}
