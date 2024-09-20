@@ -34,9 +34,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_20_160102) do
     t.index ["store_id"], name: "index_items_on_store_id"
   end
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_20_150332) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
   create_table "stores", force: :cascade do |t|
     t.string "name"
     t.string "address"
