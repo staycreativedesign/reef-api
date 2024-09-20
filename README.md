@@ -8,6 +8,18 @@ Database adapter          postgresql
 Database schema version   20240920160102
 Docker version            25.0.0, build e758fe5a7f
 ```
+
+Solution : Basic CRUD API
+Added features
+
+When Items or Ingredients are blank I could've returned a no_content but I've always ran into and felt that a 200 with info message saying to the dev go add some. 
+Catch all Errors on application level giving information to the dev.  If need be said errors could be overwritten in the specific controller level. 
+
+# TODO 
+I'd graphql this. 
+Authentication.
+meta program errors. 
+
 # Quick API Testing with Postman (https://www.postman.com/)
 
 Load this document with Postman 
