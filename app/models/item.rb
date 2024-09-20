@@ -21,4 +21,5 @@ class Item < ApplicationRecord
   validates :price_cents, numericality: { only_integer: true }
 
   belongs_to :store, dependent: :destroy
+  has_many :ingredients
 end

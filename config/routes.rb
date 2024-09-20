@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :stores, except: %i[ new edit] do
         resources :items, shallow: true, except: %i[ new edit]  do
+          resources :ingredients, shallow: true, except: %i[ new edit]
         end
       end
     end
