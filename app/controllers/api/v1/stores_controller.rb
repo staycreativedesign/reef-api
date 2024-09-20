@@ -21,7 +21,7 @@ module Api
       end
 
       def update
-        result = @store.update!(store_params)
+        @store.update!(store_params)
 
         render json: @store, status: :ok
       end
